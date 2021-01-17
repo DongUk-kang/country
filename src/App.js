@@ -5,8 +5,15 @@ const App = () => {
 
   const [loans, setLoans] = useState([])
 
-  useEffect(() => {
+  //네트워킹
+  const getData = async () => {
+    return (
 
+    )
+  }
+
+  useEffect(() => {
+    getData()
   }, [])
 
 
