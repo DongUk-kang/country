@@ -1,5 +1,4 @@
 import React, {useState,useEffect} from "react";
-import Loan from "./Loan";
 
 const App = () => {
 
@@ -8,6 +7,11 @@ const App = () => {
   //네트워킹
   const getData = async () => {
     return (
+        await fetch("https://api.kivaws.org/v1/loans/newest.json")
+            .then(data => data.json())
+            .then(res => setLoans(res.loans))
+            //.then(res => console.log(res.loans))
+            .catch(err => console.log(err))
 
     )
   }
@@ -19,6 +23,17 @@ const App = () => {
 
   return (
       <div>
+
+        {loans.map(item => (
+            <>
+              <h1>{item.name}</h1>
+              <h2>{item.location.country}</h2>
+              <h3>{item.loan_amount}</h3>
+            </>
+
+        ))}
+
+        {/*<text>{loans.length}</text>*/}
         {/*{loans.map(loan => (*/}
 
         {/*    <Loan name={loan.name} country={loan.country} amount={loan.loan_amount} />*/}
